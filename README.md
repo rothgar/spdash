@@ -28,19 +28,17 @@ eg to integrate with cobbler
 `curl -s -L --max-time 3 -X GET http://spdash:5000/api/v1/build/pre/$system_name`
 
 It is recommended to run a /refresh at the end of the kickstart file to re-read PXE files.
-```
-curl -s -L --max-time 3 -X GET http://spdash:5000/api/v1/refresh
-```
+
+`curl -s -L --max-time 3 -X GET http://spdash:5000/api/v1/refresh`
+
 Run with Docker
 
 Build the container
-```
-sudo docker build -t spdash .
-```
+
+`sudo docker build -t spdash .`
 
 Run the container
-```
-sudo docker run -d --name spdash -p 5000:5000 -v /tftpboot/pxelinux.cfg:/pxe:ro spdash
-```
+
+`sudo docker run -d --name spdash -p 5000:5000 -v /tftpboot/pxelinux.cfg:/pxe:ro spdash`
 
 You should also be able to set environment variables to override default configuration (untested)
