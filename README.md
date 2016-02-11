@@ -7,15 +7,15 @@ View hosts at index.html or only pending systems at /pending
 
 ###API endpoints
 
-/api/v1/build/<status>/<hostname>
+`/api/v1/build/<status>/<hostname>`
 
 Change the hosts status to <status>
 
-/api/v1/delete/<hostname>
+`api/v1/delete/<hostname>`
 
 Deletes host from current host list
 
-/apy/v1/refresh
+`/apy/v1/refresh`
 
 Refreshes TFTP folder to look for PXE files. Works with HEX IP files or hostnames
 
