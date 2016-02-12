@@ -44,7 +44,7 @@ def set_host_status(h, s):
     db = get_db()
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-    db.execute('insert or replace into all_hosts (hostname, status, timestamp) values (?,?,?,?)', (h, s, st))
+    db.execute('insert or replace into all_hosts (hostname, status, timestamp) values (?,?,?)', (h, s, st))
     db.commit()
 
 def is_hex(string):
@@ -97,7 +97,7 @@ def close_db(error):
 def index():
     """render index template"""
     db = get_db()
-    cur = db.execute('select hostname, status, build, timestamp from all_hosts where status = "pre" OR status = "post"')
+    cur = db.execute('select hostname, status, build, timestamp from all_hosts where status <> "pending"')
     current_hosts = [dict(hostname=row[0], status=row[1], build=row[2], timestamp=row[3]) for row in cur.fetchall()]
     pend = db.execute('select hostname, status, build, timestamp from all_hosts where status="pending"')
     pending_hosts = [dict(hostname=row[0], status=row[1], build=row[2], timestamp=row[3]) for row in pend.fetchall()]
@@ -129,7 +129,7 @@ def delete_host(hostname):
 def refresh_pending():
     """refresh pending host list"""
     scan_pending_hosts(app.config['TFTPDIR'], app.config['TFTPFILTER'])
-    return redirect(url_for('pending'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     init_db()
