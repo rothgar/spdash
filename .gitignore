@@ -1,0 +1,6 @@
+*.db
+#virtualenv files
+bin/
+include/
+lib/
+lib64

@@ -1,0 +1,8 @@
+*.db
+README
+# virtualenv files
+lib
+lib64
+bin
+include
+# debug config
