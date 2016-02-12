@@ -41,4 +41,6 @@ Run the container
 
 `sudo docker run -d --name spdash -p 5000:5000 -v /tftpboot/pxelinux.cfg:/pxe:ro spdash`
 
-You should also be able to set environment variables to override default configuration (untested)
+You can also run the application in debug mode by using the SPDASH_SETTINGS environment variable. There is a debug.cfg included which turns on debug mode.
+
+`sudo docker run -d --name -pdash -p 5000:5000 -v /tftpboot/pxelinux.cfg:/pxe:ro -e SPDASH_SETTINGS=debug.cfg spdash`
