@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>Pending</h1>
+<ul class="hosts">
+  {% for host in pending_hosts|sort(attribute='hostname') %}
+  <li><h3>{{ host.hostname }}: {{ host.build }}</h3>
+  {% else %}
+  <h3>No hosts pending</h3>
+  {% endfor %}
+</ul>
+{% endblock %}
