@@ -1,11 +1,11 @@
-[WIP] System Provisioning Dashboard
+System Provisioning Dashboard
 ========
 
 Dashboard for viewing systems that are building or pending a rebuild.
 
 View hosts at index.html or only pending systems at /pending
 
-###API endpoints
+### API endpoints
 
 `/api/v1/build/<status>/<hostname>`
 
@@ -19,7 +19,7 @@ Deletes host from current host list
 
 Refreshes TFTP folder to look for PXE files. Works with HEX IP files or hostnames
 
-###Integrate with spdash
+### Integrate with spdash
 
 To integrate with spdash you can make curl calls to the api. Add the commands to your kickstart or preseed.
 
