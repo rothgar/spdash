@@ -28,6 +28,7 @@ def connect_db():
     return rv
 
 def init_db():
+    """Create a db each time the app is started"""
     with closing(connect_db()) as db:
         with app.open_resource('schema.sql', mode='r') as f:
             db.cursor().executescript(f.read())
