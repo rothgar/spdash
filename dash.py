@@ -104,14 +104,6 @@ def index():
     pending_hosts = [dict(hostname=row[0], status=row[1], build=row[2], timestamp=row[3]) for row in pend.fetchall()]
     return render_template('index.html', current_hosts=current_hosts, pending_hosts=pending_hosts)
 
-@app.route('/pending')
-def pending():
-    """Pending hosts page"""
-    db = get_db()
-    pend = db.execute('select hostname, status, build, timestamp from all_hosts where status="pending"')
-    pending_hosts = [dict(hostname=row[0], status=row[1], build=row[2], timestamp=row[3]) for row in pend.fetchall()]
-    return render_template('pending.html', pending_hosts=pending_hosts)
-
 @app.route('/api/v1/build/<status>/<hostname>')
 def update_firstboot_host(status, hostname):
     """set host status"""
