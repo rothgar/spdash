@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-<h1>Current</h1>
+<h1>Current: {{ current_hosts|length }}</h1>
 <ul class="hosts">
   {% for host in current_hosts|sort(attribute='hostname') %}
   <li><h3>{{ host.hostname }}: {{ host.status }}</h3>
@@ -9,7 +9,7 @@
   <h3>No hosts currently building</h3>
   {% endfor %}
 </ul>
-<h1>Pending</h1>
+<h1>Pending: {{ pending_hosts|length }}</h1>
 <ul class="hosts">
   {% for host in pending_hosts|sort(attribute='hostname') %}
   <li><h3>{{ host.hostname }}: {{ host.status }}</h3>
